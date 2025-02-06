@@ -1,7 +1,7 @@
 # FROM jamesmith0817/debian-rootfs-distrobox
 FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
-RUN apt update && apt full-upgrade -y && apt install tree sudo htop -y 
+RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* -y 
 RUN mkdir -vp /DATA/{AppData,Documents,Downloads,Gallery,Media/{Movies,Music,"TV_Shows"}}
 RUN mkdir -vp "/DATA" 
 RUN mkdir -vp "/DATA/AppData"  
