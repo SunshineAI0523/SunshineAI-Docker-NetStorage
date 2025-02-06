@@ -2,7 +2,6 @@
 FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* -y 
-RUN mkdir -vp /DATA/{AppData,Documents,Downloads,Gallery,Media/{Movies,Music,"TV_Shows"}}
 RUN mkdir -vp "/DATA" 
 RUN mkdir -vp "/DATA/AppData"  
 RUN mkdir -vp "/DATA/Documents" 
@@ -25,6 +24,28 @@ RUN mkdir -vp "/DATA/Media/Movies"
 RUN mkdir -vp "/DATA/Media/Music" 
 RUN mkdir -vp "/DATA/Media/TV_Shows"
 RUN tree /DATA 
+RUN mkdir -vp "/home/minio" 
+RUN mkdir -vp "/home/minio/appdata"  
+RUN mkdir -vp "/home/minio/documents" 
+RUN mkdir -vp "/home/minio/downloads" 
+RUN mkdir -vp "/home/minio/gallery" 
+RUN mkdir -vp "/home/minio/compressed" 
+RUN mkdir -vp "/home/minio/desktop" 
+RUN mkdir -vp "/home/minio/games" 
+RUN mkdir -vp "/home/minio/general" 
+RUN mkdir -vp "/home/minio/isos"
+RUN mkdir -vp "/home/minio/media" 
+RUN mkdir -vp "/home/minio/others" 
+RUN mkdir -vp "/home/minio/programs" 
+RUN mkdir -vp "/home/minio/public" 
+RUN mkdir -vp "/home/minio/templates" 
+RUN mkdir -vp "/home/minio/tools"
+RUN mkdir -vp "/home/minio/torrents" 
+RUN mkdir -vp "/home/minio/videos" 
+RUN mkdir -vp "/home/minio/media/movies" 
+RUN mkdir -vp "/home/minio/media/music" 
+RUN mkdir -vp "/home/minio/media/tv_shows"
+RUN tree /home/minio
 RUN echo "Create Folder Complete !!!" 
 RUN apt update && \
     apt install supervisor* libturbojpeg* ffmpeg -y 
