@@ -1,7 +1,7 @@
 # FROM jamesmith0817/debian-rootfs-distrobox
 FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
-RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* -y 
+RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e*  -y 
 RUN mkdir -vp "/DATA" 
 RUN mkdir -vp "/DATA/AppData"  
 RUN mkdir -vp "/DATA/Documents" 
@@ -75,6 +75,8 @@ COPY cloudreve.conf /etc/supervisor/conf.d/
 # COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
 # COPY ollama.conf /etc/supervisor/conf.d/
+COPY transmission.conf /etc/supervisor/conf.d/
+COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
 COPY supervisord /etc/init.d/
 RUN chmod +x /etc/init.d/supervisor
@@ -84,5 +86,5 @@ EXPOSE 8123
 EXPOSE 3389
 EXPOSE 5244
 EXPOSE 5212
-ENTRYPOINT [ "/bin/bash" ]
-CMD [ "service", "supervisor", "start", "&", "top" ]
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD [ "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf && bash" ]
