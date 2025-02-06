@@ -45,7 +45,8 @@ RUN tar -zxvf alist-linux-amd64.tar.gz -C /home/alist/ && rm -rf alist-linux-amd
 RUN tree /home/alist/
 RUN chmod +x /home/alist/alist
 RUN mkdir -vp /etc/supervisor/conf.d/
-RUN wget "https://dl.minio.org.cn/server/minio/release/linux-amd64/minio" -O /home/minio/minio
+# RUN wget "https://dl.minio.org.cn/server/minio/release/linux-amd64/minio" -O /home/minio/minio
+RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio
 RUN chmod +x /home/minio/minio
 RUN mkdir -vp /home/minio/{appdata,compressed,desktop,documents,downloads,gallery,games,general,isos,license,media/{movies,music,tv_shows},others,programs,public,templates,test,tools,torrents,videos}
 COPY supervisord.conf /etc/supervisor/
