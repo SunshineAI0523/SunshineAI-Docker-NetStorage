@@ -1,5 +1,5 @@
-FROM jamesmith0817/debian-rootfs-distrobox
-# FROM debian:latest
+# FROM jamesmith0817/debian-rootfs-distrobox
+FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
 RUN mkdir -vp "/DATA" 
