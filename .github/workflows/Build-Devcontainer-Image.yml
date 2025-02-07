@@ -1,9 +1,9 @@
 name: Build Docker Image from DevContainer
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 
 jobs:

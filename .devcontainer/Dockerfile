@@ -1,29 +1,30 @@
-# FROM jamesmith0817/debian-rootfs-distrobox
-FROM debian:latest
+FROM jamesmith0817/debian-rootfs-distrobox
+# FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
+COPY pip.conf /root/.config/pip/pip.conf
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
-RUN mkdir -vp "/DATA" 
-RUN mkdir -vp "/DATA/AppData"  
-RUN mkdir -vp "/DATA/Documents" 
-RUN mkdir -vp "/DATA/Downloads" 
-RUN mkdir -vp "/DATA/Gallery" 
-RUN mkdir -vp "/DATA/Compressed" 
-RUN mkdir -vp "/DATA/Desktop" 
-RUN mkdir -vp "/DATA/Games" 
-RUN mkdir -vp "/DATA/General" 
-RUN mkdir -vp "/DATA/ISOS"
-RUN mkdir -vp "/DATA/Media" 
-RUN mkdir -vp "/DATA/Others" 
-RUN mkdir -vp "/DATA/Programs" 
-RUN mkdir -vp "/DATA/Public" 
-RUN mkdir -vp "/DATA/Templates" 
-RUN mkdir -vp "/DATA/Tools"
-RUN mkdir -vp "/DATA/Torrents" 
-RUN mkdir -vp "/DATA/Videos" 
-RUN mkdir -vp "/DATA/Media/Movies" 
-RUN mkdir -vp "/DATA/Media/Music" 
-RUN mkdir -vp "/DATA/Media/TV_Shows"
-RUN tree /DATA 
+# RUN mkdir -vp "/DATA" 
+# RUN mkdir -vp "/DATA/AppData"  
+# RUN mkdir -vp "/DATA/Documents" 
+# RUN mkdir -vp "/DATA/Downloads" 
+# RUN mkdir -vp "/DATA/Gallery" 
+# RUN mkdir -vp "/DATA/Compressed" 
+# RUN mkdir -vp "/DATA/Desktop" 
+# RUN mkdir -vp "/DATA/Games" 
+# RUN mkdir -vp "/DATA/General" 
+# RUN mkdir -vp "/DATA/ISOS"
+# RUN mkdir -vp "/DATA/Media" 
+# RUN mkdir -vp "/DATA/Others" 
+# RUN mkdir -vp "/DATA/Programs" 
+# RUN mkdir -vp "/DATA/Public" 
+# RUN mkdir -vp "/DATA/Templates" 
+# RUN mkdir -vp "/DATA/Tools"
+# RUN mkdir -vp "/DATA/Torrents" 
+# RUN mkdir -vp "/DATA/Videos" 
+# RUN mkdir -vp "/DATA/Media/Movies" 
+# RUN mkdir -vp "/DATA/Media/Music" 
+# RUN mkdir -vp "/DATA/Media/TV_Shows"
+# RUN tree /DATA 
 RUN mkdir -vp "/home/minio" 
 RUN mkdir -vp "/home/minio/appdata"  
 RUN mkdir -vp "/home/minio/documents" 
@@ -51,11 +52,11 @@ RUN apt update && \
     apt install supervisor* libturbojpeg* ffmpeg -y 
 ENV MINIO_ROOT_USER=admin
 ENV MINIO_ROOT_PASSWORD=password
-# RUN apt install dumb-init systemd firefox* -y
+RUN apt install dumb-init systemd firefox* -y
 RUN apt install dumb-init systemd -y
 RUN sudo adduser cloudreve --quiet --disabled-login --disabled-password --home /home/cloudreve --gecos ""
 RUN sudo adduser alist --quiet --disabled-login --disabled-password --home /home/alist  --gecos ""
-# RUN sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos ""
+RUN sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos ""
 RUN sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos ""
 RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz" -O cloudreve.tar.gz
 RUN tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz
@@ -74,7 +75,7 @@ COPY supervisord.conf /etc/supervisor/
 COPY cloudreve.conf /etc/supervisor/conf.d/
 COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
-COPY ollama.conf /etc/supervisor/conf.d/
+# COPY ollama.conf /etc/supervisor/conf.d/
 # COPY transmission.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
