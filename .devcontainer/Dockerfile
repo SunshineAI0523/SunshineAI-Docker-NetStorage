@@ -75,7 +75,7 @@ COPY cloudreve.conf /etc/supervisor/conf.d/
 # COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
 # COPY ollama.conf /etc/supervisor/conf.d/
-COPY transmission.conf /etc/supervisor/conf.d/
+# COPY transmission.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
 COPY supervisord /etc/init.d/
@@ -87,4 +87,4 @@ EXPOSE 3389
 EXPOSE 5244
 EXPOSE 5212
 ENTRYPOINT [ "/bin/bash", "-c" ]
-CMD [ "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf && bash" ]
+CMD [ "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf && service transmission-daemon start && bash" ]
