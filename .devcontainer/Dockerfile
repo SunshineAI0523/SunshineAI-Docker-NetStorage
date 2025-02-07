@@ -69,12 +69,12 @@ RUN mkdir -vp /etc/supervisor/conf.d/
 # RUN wget "https://dl.minio.org.cn/server/minio/release/linux-amd64/minio" -O /home/minio/minio
 RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio
 RUN chmod +x /home/minio/minio
-RUN mkdir -vp /home/minio/{appdata,compressed,desktop,documents,downloads,gallery,games,general,isos,license,media/{movies,music,tv_shows},others,programs,public,templates,test,tools,torrents,videos}
+# RUN mkdir -vp /home/minio/{appdata,compressed,desktop,documents,downloads,gallery,games,general,isos,license,media/{movies,music,tv_shows},others,programs,public,templates,test,tools,torrents,videos}
 COPY supervisord.conf /etc/supervisor/
 COPY cloudreve.conf /etc/supervisor/conf.d/
 # COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
-# COPY ollama.conf /etc/supervisor/conf.d/
+COPY ollama.conf /etc/supervisor/conf.d/
 # COPY transmission.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
