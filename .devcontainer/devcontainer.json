@@ -11,22 +11,22 @@
 		"context": "."
 	  },
 	"features": {
-      	"ghcr.io/devcontainers/features/java:1": {
-			"version": "8",
-			"jdkDistro": "tem",
-			"installMaven": "true",
-			"mavenVersion": "3.8.6",
-			"installGradle": "true",
-			"gradleVersion": "latest"
-  		},
-		"ghcr.io/devcontainers/features/node:1": {
-			"version": "lts",
-			"nodeGypDependencies": "true",
-			"nvmInstallPath": "/usr/local/share/nvm",
-			"pnpmVersion": "latest",
-			"nvmVersion": "latest",
-			"installYarnUsingApt": "true"
-		},
+      	// "ghcr.io/devcontainers/features/java:1": {
+		// 	"version": "8",
+		// 	"jdkDistro": "tem",
+		// 	"installMaven": "true",
+		// 	"mavenVersion": "3.8.6",
+		// 	"installGradle": "true",
+		// 	"gradleVersion": "latest"
+  		// },
+		// "ghcr.io/devcontainers/features/node:1": {
+		// 	"version": "lts",
+		// 	"nodeGypDependencies": "true",
+		// 	"nvmInstallPath": "/usr/local/share/nvm",
+		// 	"pnpmVersion": "latest",
+		// 	"nvmVersion": "latest",
+		// 	"installYarnUsingApt": "true"
+		// },
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": "boolean",
 			"configureZshAsDefaultShell": "false",
@@ -47,12 +47,13 @@
 			"installPath": "/usr/local/python",
 			"installJupyterlab": "true",
 			"configureJupyterlabAllowOrigin": "0.0.0.0"
-		},
-		"ghcr.io/devcontainers/features/rust:1": {
-			"version": "latest",
-			"profile": "complete",
-			"targets": ""
 		}
+		// },
+		// "ghcr.io/devcontainers/features/rust:1": {
+		// 	"version": "latest",
+		// 	"profile": "complete",
+		// 	"targets": ""
+		// }
 	},
 	// Configure tool-specific properties.
 	"customizations": {
