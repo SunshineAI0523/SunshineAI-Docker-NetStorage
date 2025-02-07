@@ -11,48 +11,48 @@
 		"context": "."
 	  },
 	"features": {
-      	// "ghcr.io/devcontainers/features/java:1": {
-		// 	"version": "8",
-		// 	"jdkDistro": "tem",
-		// 	"installMaven": "true",
-		// 	"mavenVersion": "3.8.6",
-		// 	"installGradle": "true",
-		// 	"gradleVersion": "latest"
-  		// },
-		// "ghcr.io/devcontainers/features/node:1": {
-		// 	"version": "lts",
-		// 	"nodeGypDependencies": "true",
-		// 	"nvmInstallPath": "/usr/local/share/nvm",
-		// 	"pnpmVersion": "latest",
-		// 	"nvmVersion": "latest",
-		// 	"installYarnUsingApt": "true"
-		// },
-      	// "ghcr.io/devcontainers/features/common-utils:2": {
-		// 	"installZsh": "boolean",
-		// 	"configureZshAsDefaultShell": "false",
-		// 	"installOhMyZsh": "true",
-		// 	"installOhMyZshConfig": "true",
-		// 	"upgradePackages": "true",
-		// 	"username": "administrator",
-		// 	"userUid": "1100",
-		// 	"userGid": "1100",
-		// 	"nonFreePackages": "true"
-      	// },
-		// "ghcr.io/devcontainers/features/python:1": {
-		// 	"version": "3.13",
-		// 	"installTools": "true",
-		// 	"toolsToInstall": "flake8,autopep8,black,yapf,mypy,pydocstyle,pycodestyle,bandit,pipenv,virtualenv,pytest,pylint,homeassistant==2024.12.5",
-		// 	"optimize": "true",
-		// 	"enableShared": "true",
-		// 	"installPath": "/usr/local/python",
-		// 	"installJupyterlab": "true",
-		// 	"configureJupyterlabAllowOrigin": "0.0.0.0"
-		// },
-		// "ghcr.io/devcontainers/features/rust:1": {
-		// 	"version": "latest",
-		// 	"profile": "complete",
-		// 	"targets": ""
-		// }
+      	"ghcr.io/devcontainers/features/java:1": {
+			"version": "8",
+			"jdkDistro": "tem",
+			"installMaven": "true",
+			"mavenVersion": "3.8.6",
+			"installGradle": "true",
+			"gradleVersion": "latest"
+  		},
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts",
+			"nodeGypDependencies": "true",
+			"nvmInstallPath": "/usr/local/share/nvm",
+			"pnpmVersion": "latest",
+			"nvmVersion": "latest",
+			"installYarnUsingApt": "true"
+		},
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "boolean",
+			"configureZshAsDefaultShell": "false",
+			"installOhMyZsh": "true",
+			"installOhMyZshConfig": "true",
+			"upgradePackages": "true",
+			"username": "administrator",
+			"userUid": "1100",
+			"userGid": "1100",
+			"nonFreePackages": "true"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.13",
+			"installTools": "true",
+			"toolsToInstall": "flake8,autopep8,black,yapf,mypy,pydocstyle,pycodestyle,bandit,pipenv,virtualenv,pytest,pylint,homeassistant==2024.12.5",
+			"optimize": "true",
+			"enableShared": "true",
+			"installPath": "/usr/local/python",
+			"installJupyterlab": "true",
+			"configureJupyterlabAllowOrigin": "0.0.0.0"
+		},
+		"ghcr.io/devcontainers/features/rust:1": {
+			"version": "latest",
+			"profile": "complete",
+			"targets": ""
+		}
 	},
 	// Configure tool-specific properties.
 	"customizations": {
@@ -92,8 +92,8 @@
 	"forwardPorts": [8123,3389,5244,5212],
 
 // 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "python3 --version && pip version",
+	"postCreateCommand": "python3 --version && pip version",
 
 // 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "administrator"
+	"remoteUser": "administrator"
 }
