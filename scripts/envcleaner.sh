@@ -3,7 +3,7 @@
 # 定义要卸载的软件包列表
 PACKAGES=(
     # 开发工具和依赖
-    g++ gcc make autoconf automake pkg-config libtool libc++-dev libc++abi-dev
+    g++* gcc* make cpp* dotnet* autoconf automake pkg-config libtool libc++-dev libc++abi-dev
     libmagic-dev libsqlite3-dev libyaml-dev fakeroot dpkg-dev bison swig texinfo
 
     # # 压缩和打包工具
@@ -13,18 +13,18 @@ PACKAGES=(
     fonts-noto-color-emoji imagemagick libmagickcore-dev libmagickwand-dev
 
     # 多媒体相关工具
-    mediainfo upx ftp aria2
+    mediainfo upx ftp aria2 mysql* php* postgresql-*
 
     # 网络工具
-    dnsutils netcat net-tools iproute2 iputils-ping openssh-client
+    dnsutils netcat net-tools iproute2 iputils-ping openssh-client snap*
 
     # 其他可能占用空间较大的工具
     ant sqlite3 texinfo sphinxsearch azure-cli dotnet-sdk-6.0 dotnet-sdk-7.0 dotnet-sdk-8.0 
-    esl-erlang firefox google-chrome-stable google-cloud-cli hhvm libgl1-mesa-dri llvm-10-dev 
+    esl-erlang firefox google-chrome-stable microsoft-edge-stable google-cloud-cli hhvm libgl1-mesa-dri llvm-10-dev 
     llvm-11-dev llvm-12-dev microsoft-edge-stable mongodb-mongosh mysql-server-core-8.0 temurin-11-jdk 
     temurin-17-jdk temurin-21-jdk temurin-8-jdk  gcc-10  kubectl libclang-common-10-dev 
     libclang-common-11-dev libclang-common-12-dev libllvm10 libllvm11 libllvm12 mono-devel mono-llvm-tools 
-    mysql-client-core-8.0 openjdk-11-jre-headless postgresql-14 powershell openjdk* llvm* 
+    mysql-client-core-8.0 openjdk-11-jre-headless postgresql-14 powershell openjdk* llvm* java*
 )
 
 echo "开始卸载占用空间较大的软件包..."
