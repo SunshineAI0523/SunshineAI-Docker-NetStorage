@@ -1,4 +1,4 @@
-FROM jamesmith0817/debian-rootfs-xfce
+FROM jamesmith0817/jamesmith0817/sunshineai-debian-bookworm
 # FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
 COPY pip.conf /root/.config/pip/pip.conf
@@ -80,7 +80,7 @@ COPY ollama.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
 COPY supervisord /etc/init.d/
-RUN chmod +x /etc/init.d/supervisor
+# RUN chmod +x /etc/init.d/supervisord
 RUN mkdir -vp /run/systemd 
 STOPSIGNAL SIGRTMIN+3
 EXPOSE 8123

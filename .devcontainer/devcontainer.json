@@ -11,14 +11,14 @@
 		"context": "."
 	  },
 	"features": {
-		// "ghcr.io/devcontainers/features/dotnet:2": {
-		// 	"version": "latest",
-		// 	"additionalVersions": "lts, 8.0, 7.0, 6.0",
-		// 	"dotnetRuntimeVersions": "latest, lts, 8.0, 7.0, 6.0",
-		// 	"aspNetCoreRuntimeVersions": "latest, lts",
-		// 	"workloads": "string",
-		// },
-		"ghcr.io/devcontainers/features/oryx:1": {},
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
+			"installCudnn": true,
+			"installCudnnDev": true,
+			"installNvtx": true,
+			"installToolkit": true,
+			"cudaVersion": "12.4",
+			"cudnnVersion": "automatic"
+		},
 		"ghcr.io/devcontainers/features/powershell:1": {
 			"version": "latest",
 			"modules": "",
