@@ -11,7 +11,19 @@
 		"context": "."
 	  },
 	"features": {
+		// "ghcr.io/devcontainers/features/dotnet:2": {
+		// 	"version": "latest",
+		// 	"additionalVersions": "lts, 8.0, 7.0, 6.0",
+		// 	"dotnetRuntimeVersions": "latest, lts, 8.0, 7.0, 6.0",
+		// 	"aspNetCoreRuntimeVersions": "latest, lts",
+		// 	"workloads": "string",
+		// },
 		"ghcr.io/devcontainers/features/oryx:1": {},
+		"ghcr.io/devcontainers/features/powershell:1": {
+			"version": "latest",
+			"modules": "",
+			"powershellProfileURL": ""
+		},
       	"ghcr.io/devcontainers/features/java:1": {
 			"version": "8",
 			"jdkDistro": "tem",
@@ -60,7 +72,7 @@
 		},
 		"ghcr.io/mamba-org/devcontainer-features/micromamba:1": {
 			"version": "latest",
-			"allowReinstall": false,
+			"allowReinstall": true,
 			"autoActivate": true,
 			"channels": "conda-forge",
 			"envFile": "",
