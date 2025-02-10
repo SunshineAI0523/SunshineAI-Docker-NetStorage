@@ -19,6 +19,7 @@
 			"cudaVersion": "12.4",
 			"cudnnVersion": "automatic"
 		},
+		"ghcr.io/devcontainers/features/oryx:1": {},
 		"ghcr.io/devcontainers/features/powershell:1": {
 			"version": "latest",
 			"modules": "",
