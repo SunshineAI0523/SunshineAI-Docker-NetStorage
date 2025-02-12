@@ -1,4 +1,4 @@
-FROM jamesmith0817/sunshineai-debian-bookworm
+FROM jamesmith0817/sunshineai-debian-bullseye
 # FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
 COPY pip.conf /root/.config/pip/pip.conf
@@ -75,8 +75,8 @@ COPY supervisord.conf /etc/supervisor/
 COPY cloudreve.conf /etc/supervisor/conf.d/
 COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
-COPY ollama.conf /etc/supervisor/conf.d/
-COPY mysql.conf /etc/supervisor/conf.d/
+# COPY ollama.conf /etc/supervisor/conf.d/
+# COPY mysql.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
 COPY supervisord /etc/init.d/
