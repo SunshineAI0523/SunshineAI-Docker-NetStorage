@@ -1,54 +1,100 @@
-# DockerImagesTarbuilder
+# SunshineAI-Docker-NetStorage
 
-一个用于拉取和打包 Docker 镜像的工具集，支持多架构（AMD64/ARM64/ARM32）镜像的获取和打包。
+一个基于Docker容器技术的智能网络存储解决方案,集成了多种常用网盘、下载工具和智能家居服务。
+
+## 技术栈
+
+- **容器化技术**
+  - Docker
+  - DevContainer
+  - GitHub Actions自动构建
+
+- **存储服务**
+  - Cloudreve (文件管理与分享)
+  - AList (多存储引擎聚合)
+  - MinIO (对象存储服务)
+
+- **智能家居**
+  - Home Assistant (智能家居控制中心)
+
+- **下载工具**
+  - Aria2 (多协议下载器)
+  - qBittorrent (BT下载工具)
+  - Transmission (轻量级BT客户端)
 
 ## 功能特点
 
-- 支持多架构 Docker 镜像的拉取和打包:
-  - x86-64 (AMD64)
-  - ARM64
-  - ARM32 (ARMv7)
-- 支持批量处理多个镜像
-- 自动压缩打包为 tar.gz 格式
-- 基于 GitHub Actions 自动化工作流
-- 支持自定义镜像列表
-- 自动清理中间文件
+### 1. 统一存储管理
+- 多种存储服务集成(Cloudreve/AList/MinIO)
+- 统一的文件管理界面
+- 支持多种存储协议
+- 灵活的权限控制
 
-## 使用方法
+### 2. 智能下载中心
+- 支持多种下载协议(HTTP/FTP/BT/磁力链接等)
+- 多任务并行下载
+- 自动分类存储
+- 远程控制管理
 
-1. Fork 本仓库到你的 GitHub 账号下
-2. 在 Actions 页面中选择需要的架构工作流:
+### 3. 智能家居集成
+- Home Assistant智能家居控制
+- 设备自动发现
+- 场景自动化
+- 远程监控管理
 
-   - `x86-64 Pull and Save Docker Image`
-   - `ARM64 Pull and Save Docker Image`
-   - `ARM32 Pull and Save Docker Image`
-3. 点击 "Run workflow"，在弹出的输入框中填写需要拉取的 Docker 镜像名称
+### 4. 系统特性
+- 基于DevContainer的开发环境
+- 多架构支持(AMD64/ARM64)
+- 自动化构建与部署
+- 容器化隔离运行
+- 简单的配置管理
 
-   - 多个镜像用英文逗号分隔
-   - 格式示例: `alpine:latest,ubuntu:latest,nginx:stable`
-4. 工作流执行完成后，可以在 Artifacts 中下载打包好的镜像文件:
+## 目录结构
 
-   - x86-64 架构: `x86-64-images.tar.gz`
-   - ARM64 架构: `arm64-images.tar.gz`
-   - ARM32 架构: `arm32-images.tar.gz`
+```
+.
+├── .devcontainer/          # 开发容器配置
+├── .github/workflows/      # GitHub Actions工作流
+├── scripts/               # 辅助脚本
+└── README.md              # 项目说明文档
+```
 
-## 文件说明
+## 快速开始
 
-- `.github/workflows/amd64.yml` - x86-64 架构镜像打包工作流
-- `.github/workflows/arm64.yml` - ARM64 架构镜像打包工作流
-- `.github/workflows/arm32.yml` - ARM32 架构镜像打包工作流
-- `_worker.js` - Cloudflare Worker 代理脚本，用于优化镜像拉取
+1. 克隆仓库
+```bash
+git clone https://github.com/yourusername/SunshineAI-Docker-NetStorage.git
+```
 
-## 注意事项
+2. 使用VSCode打开项目,并重新打开至容器中
 
-1. 生成的压缩包默认保留 1 天，最多可设置保留 90 天
-2. 为了节省 GitHub Actions 空间，工作流会自动清理中间文件
-3. 建议合理控制单次拉取的镜像数量，避免超出 GitHub Actions 的限制
-4. 如果遇到拉取失败，可以尝试使用代理或者更换镜像源
+3. 等待容器构建完成后即可使用
 
-## 贡献
+## 服务访问
 
-欢迎提交 Issue 和 Pull Request 来帮助改进这个项目。
+- Home Assistant: `http://localhost:8123`
+- Cloudreve: `http://localhost:5212`
+- AList: `http://localhost:5244`
+- MinIO: `http://localhost:9000`
+- MinIO Console: `http://localhost:9001`
+
+## 环境要求
+
+- Docker 20.10+
+- VSCode + Remote Container插件
+- 8GB+ RAM建议
+- 20GB+ 可用磁盘空间
+
+## 开发相关
+
+- 支持VSCode DevContainer开发环境
+- 集成代码规范检查
+- 自动化测试与构建
+- 容器镜像自动发布
+
+## 贡献指南
+
+欢迎提交Issue和Pull Request来帮助改进项目。
 
 ## 许可证
 
@@ -56,6 +102,8 @@
 
 ## 相关项目
 
-- Docker Hub: https://hub.docker.com/
-- GitHub Actions: https://github.com/features/actions
-- Cloudflare Workers: https://workers.cloudflare.com/
+- [Home Assistant](https://www.home-assistant.io/)
+- [Cloudreve](https://github.com/cloudreve/Cloudreve)
+- [AList](https://github.com/alist-org/alist)
+- [MinIO](https://min.io/)
+```

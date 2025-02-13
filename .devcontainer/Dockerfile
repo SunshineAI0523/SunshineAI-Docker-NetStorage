@@ -1,4 +1,4 @@
-FROM jamesmith0817/sunshineai-debian-bullseye
+FROM jamesmith0817/sunshineai-debian-bookworm
 # FROM debian:latest
 # COPY sources.list /etc/apt/sources.list
 COPY pip.conf /root/.config/pip/pip.conf

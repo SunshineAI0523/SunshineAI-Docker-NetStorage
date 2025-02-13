@@ -11,36 +11,20 @@
 		"context": "."
 	  },
 	"features": {
-		// "ghcr.io/devcontainers/features/nvidia-cuda:1": {
-		// 	"installCudnn": true,
-		// 	"installCudnnDev": true,
-		// 	"installNvtx": true,
-		// 	"installToolkit": true,
-		// 	"cudaVersion": "12.4",
-		// 	"cudnnVersion": "9.7.1.26"
-		// },
-		// "ghcr.io/devcontainers/features/oryx:1": {},
-		// "ghcr.io/devcontainers/features/powershell:1": {
-		// 	"version": "latest",
-		// 	"modules": "",
-		// 	"powershellProfileURL": ""
-		// },
-      	// "ghcr.io/devcontainers/features/java:1": {
-		// 	"version": "8",
-		// 	"jdkDistro": "tem",
-		// 	"installMaven": "true",
-		// 	"mavenVersion": "3.8.6",
-		// 	"installGradle": "true",
-		// 	"gradleVersion": "latest"
-  		// },
-		// "ghcr.io/devcontainers/features/node:1": {
-		// 	"version": "lts",
-		// 	"nodeGypDependencies": "true",
-		// 	"nvmInstallPath": "/usr/local/share/nvm",
-		// 	"pnpmVersion": "latest",
-		// 	"nvmVersion": "latest",
-		// 	"installYarnUsingApt": "true"
-		// },
+		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
+			"installCudnn": true,
+			"installCudnnDev": true,
+			"installNvtx": true,
+			"installToolkit": true,
+			"cudaVersion": "12.4",
+			"cudnnVersion": "9.7.1.26"
+		},
+		"ghcr.io/devcontainers/features/oryx:1": {},
+		"ghcr.io/devcontainers/features/powershell:1": {
+			"version": "latest",
+			"modules": "",
+			"powershellProfileURL": ""
+		},
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": "boolean",
 			"configureZshAsDefaultShell": "false",
@@ -61,24 +45,7 @@
 			"installPath": "/usr/local/python",
 			"installJupyterlab": "true",
 			"configureJupyterlabAllowOrigin": "0.0.0.0"
-		},
-		// "ghcr.io/devcontainers/features/rust:1": {
-		// 	"version": "latest",
-		// 	"profile": "complete",
-		// 	"targets": ""
-		// },
-		// "ghcr.io/devcontainers/features/conda:1": {
-		// 	"version": "latest",
-		// 	"addCondaForge": true
-		// },
-		// "ghcr.io/mamba-org/devcontainer-features/micromamba:1": {
-		// 	"version": "latest",
-		// 	"allowReinstall": true,
-		// 	"autoActivate": true,
-		// 	"channels": "conda-forge",
-		// 	"envFile": "",
-		// 	"envName": ""
-		// }
+		}
 	},
 	// Configure tool-specific properties.
 	"customizations": {
