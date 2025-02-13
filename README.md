@@ -5,19 +5,20 @@
 ## 技术栈
 
 - **容器化技术**
+
   - Docker
   - DevContainer
   - GitHub Actions自动构建
-
 - **存储服务**
+
   - Cloudreve (文件管理与分享)
   - AList (多存储引擎聚合)
   - MinIO (对象存储服务)
-
 - **智能家居**
-  - Home Assistant (智能家居控制中心)
 
+  - Home Assistant (智能家居控制中心)
 - **下载工具**
+
   - Aria2 (多协议下载器)
   - qBittorrent (BT下载工具)
   - Transmission (轻量级BT客户端)
@@ -25,24 +26,28 @@
 ## 功能特点
 
 ### 1. 统一存储管理
+
 - 多种存储服务集成(Cloudreve/AList/MinIO)
 - 统一的文件管理界面
 - 支持多种存储协议
 - 灵活的权限控制
 
 ### 2. 智能下载中心
+
 - 支持多种下载协议(HTTP/FTP/BT/磁力链接等)
 - 多任务并行下载
 - 自动分类存储
 - 远程控制管理
 
 ### 3. 智能家居集成
+
 - Home Assistant智能家居控制
 - 设备自动发现
 - 场景自动化
 - 远程监控管理
 
 ### 4. 系统特性
+
 - 基于DevContainer的开发环境
 - 多架构支持(AMD64/ARM64)
 - 自动化构建与部署
@@ -62,12 +67,12 @@
 ## 快速开始
 
 1. 克隆仓库
+
 ```bash
 git clone https://github.com/yourusername/SunshineAI-Docker-NetStorage.git
 ```
 
 2. 使用VSCode打开项目,并重新打开至容器中
-
 3. 等待容器构建完成后即可使用
 
 ## 服务访问
@@ -106,4 +111,7 @@ git clone https://github.com/yourusername/SunshineAI-Docker-NetStorage.git
 - [Cloudreve](https://github.com/cloudreve/Cloudreve)
 - [AList](https://github.com/alist-org/alist)
 - [MinIO](https://min.io/)
+
+```
+
 ```

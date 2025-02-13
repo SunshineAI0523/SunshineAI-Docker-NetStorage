@@ -40,8 +40,7 @@ jobs:
     - name: Save Docker image to tar
       run: |
         # Save the built Docker image to a tar file
-        docker tag jamesmith0817/docker-netstorage:latest ghcr.io/SunshineAI0523/docker-netstorage:latest
-        docker push ghcr.io/SunshineAI0523/docker-netstorage:latest
+        docker push jamesmith0817/docker-netstorage:latest 
 
     # - name: Upload Docker image artifact
     #   uses: actions/upload-artifact@v4
