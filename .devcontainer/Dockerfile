@@ -46,4 +46,4 @@ COPY homeassistant.conf /etc/supervisor/conf.d/
 RUN mkdir -vp /run/systemd 
 STOPSIGNAL SIGRTMIN+3
 ENTRYPOINT [ "/bin/bash", "-c" ]
-CMD [ "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf &&  && service transmission-daemon start && bash" ]
+CMD [ "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf && service transmission-daemon start && service ssh start && service rsync start && bash" ]
