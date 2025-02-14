@@ -3,57 +3,32 @@ FROM debian:12
 # COPY sources-bookworm.list /etc/apt/sources.list
 # COPY pip.conf /root/.config/pip/pip.conf
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
-RUN mkdir -vp "/DATA" 
-RUN mkdir -vp "/DATA/AppData"  
-RUN mkdir -vp "/DATA/Documents" 
-RUN mkdir -vp "/DATA/Downloads" 
-RUN mkdir -vp "/DATA/Gallery" 
-RUN mkdir -vp "/DATA/Compressed" 
-RUN mkdir -vp "/DATA/Desktop" 
-RUN mkdir -vp "/DATA/Games" 
-RUN mkdir -vp "/DATA/General" 
-RUN mkdir -vp "/DATA/ISOS"
-RUN mkdir -vp "/DATA/Media" 
-RUN mkdir -vp "/DATA/Others" 
-RUN mkdir -vp "/DATA/Programs" 
-RUN mkdir -vp "/DATA/Public" 
-RUN mkdir -vp "/DATA/Templates" 
-RUN mkdir -vp "/DATA/Tools"
-RUN mkdir -vp "/DATA/Torrents" 
-RUN mkdir -vp "/DATA/Videos" 
-RUN mkdir -vp "/DATA/Media/Movies" 
-RUN mkdir -vp "/DATA/Media/Music" 
-RUN mkdir -vp "/DATA/Media/TV_Shows"
-RUN tree /DATA 
-RUN mkdir -vp "/home/minio" 
-RUN mkdir -vp "/home/minio/appdata"  
-RUN mkdir -vp "/home/minio/documents" 
-RUN mkdir -vp "/home/minio/downloads" 
-RUN mkdir -vp "/home/minio/gallery" 
-RUN mkdir -vp "/home/minio/compressed" 
-RUN mkdir -vp "/home/minio/desktop" 
-RUN mkdir -vp "/home/minio/games" 
-RUN mkdir -vp "/home/minio/general" 
-RUN mkdir -vp "/home/minio/isos"
-RUN mkdir -vp "/home/minio/media" 
-RUN mkdir -vp "/home/minio/others" 
-RUN mkdir -vp "/home/minio/programs" 
-RUN mkdir -vp "/home/minio/public" 
-RUN mkdir -vp "/home/minio/templates" 
-RUN mkdir -vp "/home/minio/tools"
-RUN mkdir -vp "/home/minio/torrents" 
-RUN mkdir -vp "/home/minio/videos" 
-RUN mkdir -vp "/home/minio/media/movies" 
-RUN mkdir -vp "/home/minio/media/music" 
-RUN mkdir -vp "/home/minio/media/tv_shows"
-RUN tree /home/minio
-RUN echo "Create Folder Complete !!!" 
+RUN mkdir -vp "/DATA" && \
+    mkdir -vp "/DATA/AppData" && \ 
+    mkdir -vp "/DATA/Documents" && \
+    mkdir -vp "/DATA/Downloads" && \
+    mkdir -vp "/DATA/Gallery" && \
+    mkdir -vp "/DATA/Compressed" && \
+    mkdir -vp "/DATA/Desktop" && \
+    mkdir -vp "/DATA/Games" && \
+    mkdir -vp "/DATA/General" && \
+    mkdir -vp "/DATA/ISOS" && \
+    mkdir -vp "/DATA/Media" && \
+    mkdir -vp "/DATA/Others" && \
+    mkdir -vp "/DATA/Programs" && \
+    mkdir -vp "/DATA/Public" && \
+    mkdir -vp "/DATA/Templates" && \
+    mkdir -vp "/DATA/Tools" && \
+    mkdir -vp "/DATA/Torrents" && \
+    mkdir -vp "/DATA/Videos" && \
+    mkdir -vp "/DATA/Media/Movies" && \
+    mkdir -vp "/DATA/Media/Music" && \
+    mkdir -vp "/DATA/Media/TV_Shows"
+RUN tree /DATA && echo "Create Folder Complete !!!" 
 RUN apt update && \
-    apt install supervisor* libturbojpeg* ffmpeg -y 
-RUN apt install dumb-init systemd -y
+    apt install supervisor* libturbojpeg* ffmpeg dumb-init systemd -y 
 RUN sudo adduser cloudreve --quiet --disabled-login --disabled-password --home /home/cloudreve --gecos ""
 RUN sudo adduser alist --quiet --disabled-login --disabled-password --home /home/alist  --gecos ""
-# RUN sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos ""
 RUN sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos ""
 RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz" -O cloudreve.tar.gz
 RUN tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz
@@ -73,9 +48,5 @@ COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
 RUN mkdir -vp /run/systemd 
 STOPSIGNAL SIGRTMIN+3
-EXPOSE 8123
-EXPOSE 3389
-EXPOSE 5244
-EXPOSE 5212
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD [ "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf && service transmission-daemon start && bash" ]

@@ -82,7 +82,7 @@
 	// "workspaceFolder": "/SunshineAI/SunshineAI-SDWebUI/",
 
 // 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8123,3389,5244,5212],
+	"forwardPorts": [8123,8080,5244,5212],
 
 // 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "python3 --version && pip version",
