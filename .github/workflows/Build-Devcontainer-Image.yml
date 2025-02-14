@@ -40,10 +40,10 @@ jobs:
     - name: Save Docker image to tar
       run: |
         # Save the built Docker image to a tar file
-        docker push jamesmith0817/docker-netstorage:latest 
+        docker save jamesmith0817/docker-netstorage:latest -o net-storage.tar
 
-    # - name: Upload Docker image artifact
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: devcontainer-image
-    #     path: net-storage.tar
+    - name: Upload Docker image artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: devcontainer-image
+        path: net-storage.tar

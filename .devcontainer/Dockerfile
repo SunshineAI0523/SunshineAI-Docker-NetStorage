@@ -1,7 +1,7 @@
-FROM jamesmith0817/sunshineai-debian-bookworm
-# FROM debian:latest
-# COPY sources.list /etc/apt/sources.list
-COPY pip.conf /root/.config/pip/pip.conf
+# FROM jamesmith0817/sunshineai-debian-bullseye
+FROM debian:12
+# COPY sources-bookworm.list /etc/apt/sources.list
+# COPY pip.conf /root/.config/pip/pip.conf
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
 RUN mkdir -vp "/DATA" 
 RUN mkdir -vp "/DATA/AppData"  
@@ -50,13 +50,10 @@ RUN tree /home/minio
 RUN echo "Create Folder Complete !!!" 
 RUN apt update && \
     apt install supervisor* libturbojpeg* ffmpeg -y 
-ENV MINIO_ROOT_USER=admin
-ENV MINIO_ROOT_PASSWORD=password
-RUN apt install dumb-init systemd firefox* -y
 RUN apt install dumb-init systemd -y
 RUN sudo adduser cloudreve --quiet --disabled-login --disabled-password --home /home/cloudreve --gecos ""
 RUN sudo adduser alist --quiet --disabled-login --disabled-password --home /home/alist  --gecos ""
-RUN sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos ""
+# RUN sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos ""
 RUN sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos ""
 RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz" -O cloudreve.tar.gz
 RUN tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz
@@ -67,20 +64,13 @@ RUN tar -zxvf alist-linux-amd64.tar.gz -C /home/alist/ && rm -rf alist-linux-amd
 RUN tree /home/alist/
 RUN chmod +x /home/alist/alist
 RUN mkdir -vp /etc/supervisor/conf.d/
-# RUN wget "https://dl.minio.org.cn/server/minio/release/linux-amd64/minio" -O /home/minio/minio
 RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio
 RUN chmod +x /home/minio/minio
-# RUN mkdir -vp /home/minio/{appdata,compressed,desktop,documents,downloads,gallery,games,general,isos,license,media/{movies,music,tv_shows},others,programs,public,templates,test,tools,torrents,videos}
 COPY supervisord.conf /etc/supervisor/
 COPY cloudreve.conf /etc/supervisor/conf.d/
-COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
-# COPY ollama.conf /etc/supervisor/conf.d/
-# COPY mysql.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
-COPY supervisord /etc/init.d/
-# RUN chmod +x /etc/init.d/supervisord
 RUN mkdir -vp /run/systemd 
 STOPSIGNAL SIGRTMIN+3
 EXPOSE 8123

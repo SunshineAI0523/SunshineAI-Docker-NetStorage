@@ -11,14 +11,14 @@
 		"context": "."
 	  },
 	"features": {
-		"ghcr.io/devcontainers/features/nvidia-cuda:1": {
-			"installCudnn": true,
-			"installCudnnDev": true,
-			"installNvtx": true,
-			"installToolkit": true,
-			"cudaVersion": "12.4",
-			"cudnnVersion": "9.7.1.26"
-		},
+		// "ghcr.io/devcontainers/features/nvidia-cuda:1": {
+		// 	"installCudnn": true,
+		// 	"installCudnnDev": true,
+		// 	"installNvtx": true,
+		// 	"installToolkit": true,
+		// 	"cudaVersion": "12.4",
+		// 	"cudnnVersion": "9.7.1.26"
+		// },
 		"ghcr.io/devcontainers/features/oryx:1": {},
 		"ghcr.io/devcontainers/features/powershell:1": {
 			"version": "latest",
@@ -88,5 +88,5 @@
 	"postCreateCommand": "python3 --version && pip version",
 
 // 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "administrator"
+	"remoteUser": "root"
 }
