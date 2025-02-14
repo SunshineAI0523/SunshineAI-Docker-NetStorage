@@ -1,7 +1,7 @@
 # FROM jamesmith0817/sunshineai-debian-bullseye
 FROM debian:12
 # COPY sources-bookworm.list /etc/apt/sources.list
-# COPY pip.conf /root/.config/pip/pip.conf
+COPY pip.conf /root/.config/pip/pip.conf
 RUN mkdir -vp /etc/supervisor/conf.d/
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
 RUN mkdir -vp "/DATA" && \
