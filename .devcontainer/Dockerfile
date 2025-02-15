@@ -30,19 +30,22 @@ RUN apt update && \
     apt install supervisor* libturbojpeg* ffmpeg dumb-init systemd rsync* openssh* -y && \
     sudo adduser cloudreve --quiet --disabled-login --disabled-password --home /home/cloudreve --gecos "" && \
     sudo adduser alist --quiet --disabled-login --disabled-password --home /home/alist  --gecos "" && \
-    sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos ""
+    sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos "" && \
+    sudo adduser meilisearch --quiet --disabled-login --disabled-password --home /home/meilisearch --gecos ""
 RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz" -O cloudreve.tar.gz && \
     tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz && tree /home/cloudreve/ && chmod +x /home/cloudreve/cloudreve
 RUN wget "https://github.com/AlistGo/alist/releases/download/v3.41.0/alist-linux-amd64.tar.gz" -O alist-linux-amd64.tar.gz && \
     tar -zxvf alist-linux-amd64.tar.gz -C /home/alist/ && rm -rf alist-linux-amd64.tar.gz && ln -s /home/alist/alist  /usr/bin/alist && \
     tree /home/alist/ && chmod +x /home/alist/alist
 RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio && chmod +x /home/minio/minio
+RUN wget "https://github.com/meilisearch/meilisearch/releases/download/v1.12.8/meilisearch.deb" && dpkg -i meilisearch.deb && rm -rf meilisearch.deb 
 COPY supervisord.conf /etc/supervisor/
 COPY cloudreve.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
 COPY homeassistant.conf /etc/supervisor/conf.d/
+COPY meilisearch.conf /etc/supervisor/conf.d/
 RUN mkdir -vp /run/systemd 
 STOPSIGNAL SIGRTMIN+3
 ENTRYPOINT [ "/bin/bash", "-c" ]
