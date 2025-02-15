@@ -1,8 +1,6 @@
 # FROM jamesmith0817/sunshineai-debian-bullseye
 FROM debian:12
 # COPY sources-bookworm.list /etc/apt/sources.list
-ENV MEILISEARCH_LOG_FILE=/var/log/meilisearch.log
-ENV MEILISEARCH_MASTER_KEY=grep -oP '--master-key*?(\S+)' "$MEILISEARCH_LOG_FILE" | tail -n 1 | awk '{print $NF}'
 COPY pip.conf /root/.config/pip/pip.conf
 RUN mkdir -vp /etc/supervisor/conf.d/
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
