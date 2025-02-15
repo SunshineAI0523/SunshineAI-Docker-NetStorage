@@ -41,7 +41,7 @@ COPY alist.config.json /home/alist/config.json
 RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio && chmod +x /home/minio/minio
 RUN wget "https://github.com/meilisearch/meilisearch/releases/download/v1.12.8/meilisearch-linux-amd64" -O /home/meilisearch/meilisearch && chmod +x /home/meilisearch/meilisearch
 RUN chown meilisearch:meilisearch /home/meilisearch/meilisearch
-RUN mkdir /var/lib/meilisearch/data /var/lib/meilisearch/dumps /var/lib/meilisearch/snapshots
+RUN mkdir -vp /var/lib/meilisearch/data /var/lib/meilisearch/dumps /var/lib/meilisearch/snapshots
 RUN chown -R meilisearch:meilisearch /var/lib/meilisearch
 RUN chmod 750 /var/lib/meilisearch
 RUN curl https://raw.githubusercontent.com/meilisearch/meilisearch/latest/config.toml > /etc/meilisearch.toml
