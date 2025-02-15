@@ -1,6 +1,8 @@
 # FROM jamesmith0817/sunshineai-debian-bullseye
 FROM debian:12
 # COPY sources-bookworm.list /etc/apt/sources.list
+ENV MEILISEARCH_LOG_FILE=/var/log/meilisearch.log
+ENV MEILISEARCH_MASTER_KEY=grep -oP '--master-key*?(\S+)' "$MEILISEARCH_LOG_FILE" | tail -n 1 | awk '{print $NF}'
 COPY pip.conf /root/.config/pip/pip.conf
 RUN mkdir -vp /etc/supervisor/conf.d/
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
@@ -36,9 +38,15 @@ RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudre
     tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz && tree /home/cloudreve/ && chmod +x /home/cloudreve/cloudreve
 RUN wget "https://github.com/AlistGo/alist/releases/download/v3.41.0/alist-linux-amd64.tar.gz" -O alist-linux-amd64.tar.gz && \
     tar -zxvf alist-linux-amd64.tar.gz -C /home/alist/ && rm -rf alist-linux-amd64.tar.gz && ln -s /home/alist/alist  /usr/bin/alist && \
-    tree /home/alist/ && chmod +x /home/alist/alist
+    tree /home/alist/ && chmod +x /home/alist/alist && mkdir -vp /home/alist/data 
+COPY alist.config.json /home/alist/config.json
 RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio && chmod +x /home/minio/minio
-RUN wget "https://github.com/meilisearch/meilisearch/releases/download/v1.12.8/meilisearch.deb" && dpkg -i meilisearch.deb && rm -rf meilisearch.deb 
+RUN wget "https://github.com/meilisearch/meilisearch/releases/download/v1.12.8/meilisearch-linux-amd64" -O /home/meilisearch/meilisearch && chmod +x /home/meilisearch/meilisearch
+RUN chown meilisearch:meilisearch /home/meilisearch/meilisearch
+RUN mkdir /var/lib/meilisearch/data /var/lib/meilisearch/dumps /var/lib/meilisearch/snapshots
+RUN chown -R meilisearch:meilisearch /var/lib/meilisearch
+RUN chmod 750 /var/lib/meilisearch
+RUN curl https://raw.githubusercontent.com/meilisearch/meilisearch/latest/config.toml > /etc/meilisearch.toml
 COPY supervisord.conf /etc/supervisor/
 COPY cloudreve.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
