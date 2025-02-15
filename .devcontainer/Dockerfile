@@ -3,6 +3,9 @@ FROM debian:12
 # COPY sources-bookworm.list /etc/apt/sources.list
 COPY pip.conf /root/.config/pip/pip.conf
 RUN mkdir -vp /etc/supervisor/conf.d/
+RUN mkdir -vp /root/.config/uv/ /home/homeassistant/.config/uv/
+COPY uv.toml /root/.config/uv/uv.toml
+COPY uv.toml /home/homeassistant/.config/uv/uv.toml
 RUN apt update && apt full-upgrade -y && apt install tree sudo htop wget* curl* build-e* qbittorrent-* transmission-* aria* -y 
 RUN mkdir -vp "/DATA" && \
     mkdir -vp "/DATA/AppData" && \ 
@@ -31,6 +34,7 @@ RUN apt update && \
     sudo adduser cloudreve --quiet --disabled-login --disabled-password --home /home/cloudreve --gecos "" && \
     sudo adduser alist --quiet --disabled-login --disabled-password --home /home/alist  --gecos "" && \
     sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos "" && \
+    sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos "" && \
     sudo adduser meilisearch --quiet --disabled-login --disabled-password --home /home/meilisearch --gecos ""
 RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz" -O cloudreve.tar.gz && \
     tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz && tree /home/cloudreve/ && chmod +x /home/cloudreve/cloudreve
@@ -38,6 +42,8 @@ RUN wget "https://github.com/AlistGo/alist/releases/download/v3.41.0/alist-linux
     tar -zxvf alist-linux-amd64.tar.gz -C /home/alist/ && rm -rf alist-linux-amd64.tar.gz && ln -s /home/alist/alist  /usr/bin/alist && \
     tree /home/alist/ && chmod +x /home/alist/alist && mkdir -vp /home/alist/data 
 COPY alist.config.json /home/alist/config.json
+RUN mkdir /home/homeassistant/.homeassistant
+COPY configuration.yaml /home/homeassistant/.homeassistant/configuration.yaml
 RUN wget "https://dl.min.io/server/minio/release/linux-amd64/minio" -O /home/minio/minio && chmod +x /home/minio/minio
 RUN wget "https://github.com/meilisearch/meilisearch/releases/download/v1.12.8/meilisearch-linux-amd64" -O /home/meilisearch/meilisearch && chmod +x /home/meilisearch/meilisearch
 RUN chown meilisearch:meilisearch /home/meilisearch/meilisearch
