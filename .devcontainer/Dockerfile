@@ -34,7 +34,7 @@ RUN apt update && \
     sudo adduser cloudreve --quiet --disabled-login --disabled-password --home /home/cloudreve --gecos "" && \
     sudo adduser alist --quiet --disabled-login --disabled-password --home /home/alist  --gecos "" && \
     sudo adduser minio --quiet --disabled-login --disabled-password --home /home/minio --gecos "" && \
-    sudo adduser homeassistant --quiet --disabled-login --disabled-password --home /home/homeassistant --gecos "" && \
+    # sudo adduser homeassistant --quiet --disabled-password --home /home/homeassistant --gecos "" && \
     sudo adduser meilisearch --quiet --disabled-login --disabled-password --home /home/meilisearch --gecos ""
 RUN wget "https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz" -O cloudreve.tar.gz && \
     tar -zxvf cloudreve.tar.gz -C /home/cloudreve/ && rm -rf cloudreve.tar.gz && tree /home/cloudreve/ && chmod +x /home/cloudreve/cloudreve

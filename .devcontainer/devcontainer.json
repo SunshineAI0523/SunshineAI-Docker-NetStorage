@@ -26,12 +26,12 @@
 			"powershellProfileURL": ""
 		},
 		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": "boolean",
-			"configureZshAsDefaultShell": "false",
-			"installOhMyZsh": "true",
-			"installOhMyZshConfig": "true",
-			"upgradePackages": "true",
-			"username": "administrator",
+			"installZsh": true,
+			"configureZshAsDefaultShell": true,
+			"installOhMyZsh": true,
+			"installOhMyZshConfig": true,
+			"upgradePackages": true,
+			"username": "homeassistant",
 			"userUid": "1100",
 			"userGid": "1100",
 			"nonFreePackages": "true"
@@ -88,5 +88,5 @@
 	"postCreateCommand": "python3 --version && pip version",
 
 // 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "root"
+	"remoteUser": "homeassistant"
 }
