@@ -1,4 +1,4 @@
-# FROM jamesmith0817/sunshineai-debian-bullseye
+# FROM jamesmith0817/sunshineai-debian-bookworm
 FROM debian:12
 # COPY sources-bookworm.list /etc/apt/sources.list
 COPY pip.conf /root/.config/pip/pip.conf
@@ -56,7 +56,7 @@ COPY cloudreve.conf /etc/supervisor/conf.d/
 COPY alist.conf /etc/supervisor/conf.d/
 COPY aria2.conf /etc/supervisor/conf.d/
 COPY minio.conf /etc/supervisor/conf.d/
-COPY homeassistant.conf /etc/supervisor/conf.d/
+# COPY homeassistant.conf /etc/supervisor/conf.d/
 COPY meilisearch.conf /etc/supervisor/conf.d/
 RUN mkdir -vp /run/systemd 
 STOPSIGNAL SIGRTMIN+3
